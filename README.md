@@ -17,7 +17,7 @@ Before starting, make sure you have the following tools installed:
 ## Installation
 1. Clone the repository:
     ```bash
-    git clone https://github.com/Guiziin25/Learn-NodeJS.git
+    git clone https://github.com/Guiziin25/My-Blog.git
     ```
 2. Navigate to the project directory:
     ```bash
