@@ -19,13 +19,14 @@ const Post = require('./models/Post')
         app.use(bodyParser.urlencoded({extended: false}))
         app.use(bodyParser.json())
     // Rotas
+
         app.get('/', function(req, res){
             Post.findAll({order: [['id', 'DESC']]}).then(function(posts){
                 res.render('home', {posts: posts})
             })
         })
 
-        app.post('/cad', function(req, res){
+        app.get('/cad', function(req, res){
             res.render('formulario')
         })
 
@@ -40,7 +41,7 @@ const Post = require('./models/Post')
             })
         })
 
-        app.post('/deletar/:id', function(req, res){
+        app.get('/deletar/:id', function(req, res){
             Post.destroy({where: {'id': req.params.id}}).then(function(){
                 res.send('Postagem deletada com sucesso!')
             }).catch(function(erro){
@@ -48,7 +49,7 @@ const Post = require('./models/Post')
             })
         })
 
-        app.post('/edit/:id', function(req, res){
+        app.get('/edit/:id', function(req, res){
             Post.findByPk(req.params.id)
               .then(post => {
                 res.render('form-edit', {
@@ -60,7 +61,7 @@ const Post = require('./models/Post')
                 res.send('Post não encontrado!')
               })
           })
-        app.post('/editado/:id', function(req, res){
+          app.post('/editado/:id', function(req, res){
             Post.update({
               titulo: req.body.titulo,
               conteudo: req.body.conteudo
